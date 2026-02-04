@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Products Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<div class="container py-4">
+
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h3>🛒 Products Dashboard</h3>
+    <button class="btn btn-outline-secondary" id="darkToggle">🌙 Dark Mode</button>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-md-4">
+      <input id="searchInput" class="form-control" placeholder="Search by title">
+    </div>
+
+    <div class="col-md-2">
+      <select id="pageSize" class="form-select">
+        <option>5</option>
+        <option selected>10</option>
+        <option>20</option>
+      </select>
+    </div>
+
+    <div class="col-md-6 text-end">
+      <button class="btn btn-success" id="exportBtn">Export CSV</button>
+      <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createModal">+ Create</button>
+    </div>
+  </div>
+
+  <div class="table-responsive">
+    <table class="table table-bordered align-middle">
+      <thead class="table-dark">
+        <tr>
+          <th>ID</th>
+          <th id="sortTitle" style="cursor:pointer">Title ⬍</th>
+          <th id="sortPrice" style="cursor:pointer">Price ⬍</th>
+          <th>Category</th>
+          <th>Image</th>
+        </tr>
+      </thead>
+      <tbody id="tableBody"></tbody>
+    </table>
+  </div>
+
+  <ul class="pagination" id="pagination"></ul>
+</div>
+
+<!-- View Modal -->
+<div class="modal fade" id="viewModal">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5>Product Detail</h5>
+        <button class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <h4 id="viewTitle"></h4>
+        <p id="viewDesc"></p>
+        <p><b>Price:</b> $<span id="viewPrice"></span></p>
+        <p><b>Category:</b> <span id="viewCategory"></span></p>
+        <img id="viewImg" class="img-fluid rounded">
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-warning" id="editFromView">Edit</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Edit Modal -->
+<div class="modal fade" id="editModal">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5>Edit Product</h5>
+        <button class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <input type="hidden" id="editId">
+        <input id="editTitle" class="form-control mb-2" placeholder="Title">
+        <input id="editPrice" type="number" class="form-control mb-2" placeholder="Price">
+        <textarea id="editDesc" class="form-control mb-2" placeholder="Description"></textarea>
+        <input id="editCategory" type="number" class="form-control mb-2" placeholder="Category ID">
+        <input id="editImage" class="form-control mb-2" placeholder="Image URL">
+        <img id="previewImg" class="img-fluid rounded">
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" id="saveEdit">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Create Modal -->
+<div class="modal fade" id="createModal">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5>Create Product</h5>
+        <button class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <input id="newTitle" class="form-control mb-2" placeholder="Title">
+        <input id="newPrice" type="number" class="form-control mb-2" placeholder="Price">
+        <textarea id="newDesc" class="form-control mb-2" placeholder="Description"></textarea>
+        <input id="newCategory" type="number" class="form-control mb-2" placeholder="Category ID">
+        <input id="newImage" class="form-control mb-2" placeholder="Image URL">
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-success" id="createBtn">Create</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

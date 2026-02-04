@@ -1,0 +1,41 @@
+:root {
+  --bg: #f8f9fa;
+  --text: #212529;
+  --card: #ffffff;
+}
+
+body.dark {
+  --bg: #121212;
+  --text: #e4e6eb;
+  --card: #1e1e1e;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+}
+
+.table, .modal-content {
+  background: var(--card);
+  color: var(--text);
+}
+
+tbody tr:hover {
+  background: rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+}
+
+body.dark tbody tr:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.image-thumb {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+.image-thumb.large {
+  width: 120px;
+  height: 120px;
+}
